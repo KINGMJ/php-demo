@@ -8,4 +8,10 @@ class Welcome extends CI_Controller
 		exit;
 		$this->load->view('welcome_message');
 	}
+
+	public function db_test() {
+		$this->load->model('test_m');
+		$user = $this->test_m->test1();
+		log_message("error" , var_export($user , TRUE));
+	}
 }

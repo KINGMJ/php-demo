@@ -89,6 +89,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property CI_Jquery          $jquery
  * @property CI_Utf8            $utf8
  * @property CI_Security        $security
+ * @property test_m             $test_m
  */
 class CI_Controller {
 
