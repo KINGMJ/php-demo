@@ -14,4 +14,9 @@ class Welcome extends CI_Controller
 		$user = $this->test_m->test1();
 		log_message("error" , var_export($user , TRUE));
 	}
+
+	//常量里面定义数组
+	public function constant_array() {
+		print_r(TEST_ARRAY);
+	}
 }
