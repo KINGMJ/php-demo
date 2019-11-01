@@ -22,3 +22,14 @@ $hook['event_notifier_bus'][] = array(
 	'filename' => 'Event_notifier_bus.php' ,
 	'filepath' => 'hooks'
 );
+
+
+/**
+ * 模拟事件通知器中间件
+ */
+$hook['event_notifier_bus2'][] = array(
+	'class' => 'Event_notifier_bus2' ,
+	'function' => 'handle' ,
+	'filename' => 'Event_notifier_bus2.php' ,
+	'filepath' => 'hooks'
+);

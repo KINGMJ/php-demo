@@ -19,4 +19,9 @@ class Welcome extends CI_Controller
 	public function constant_array() {
 		print_r(TEST_ARRAY);
 	}
+
+
+	public function observer_test() {
+		$this->hooks->call_hook('event_notifier_bus2' , array('TaskMove' , [1 , 2 , 3]));
+	}
 }
