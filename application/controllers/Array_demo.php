@@ -60,6 +60,17 @@ class Array_demo extends CI_Controller
 		$this->test_array_walk($arr);
 	}
 
+	public function test_array_obj() {
+		$arr = [];
+		for ($i = 0; $i <= 5; $i++) {
+			$obj = new \stdClass();
+			$obj->index = $i;
+			$arr[] = $obj;
+		}
+		print_r("<pre>");
+		print_r($arr);
+	}
+
 	/**二维数组根据键值返回键名
 	 * @param $arr
 	 * @param $str
