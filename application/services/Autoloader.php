@@ -42,8 +42,6 @@ class Autoloader
 		}
 		//class Board\BoardInfo\BoardPrivilege 去掉顶层命名空间，因为$this->dir已经包含
 		$class = substr($class , strlen("Services\\"));
-
-		log_message("error" , $class);
 		// class里的 \ 都转换为 / ，不然linux服务器不认
 		$file = rtrim($this->dir , ".") . str_replace('\\' , '/' , $class) . '.php';
 		if (file_exists($file)) {
