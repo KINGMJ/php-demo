@@ -15,7 +15,7 @@ class User implements UserInterface
 
 	public function __construct($name , $email) {
 		$this->setName($name);
-		$this->setName($email);
+		$this->setEmail($email);
 	}
 
 	public function setId($id) {

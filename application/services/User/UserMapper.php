@@ -12,7 +12,6 @@ class UserMapper implements UserMapperInterface
 	}
 
 	public function findById($id) {
-		log_message("error" , var_export($this , TRUE));
 		$this->db->where('id' , $id);
 		$query = $this->db->get('user');
 		$res = $query->first_row();
@@ -23,20 +22,32 @@ class UserMapper implements UserMapperInterface
 	}
 
 	public function insert(UserInterface $user) {
-		// TODO: Implement insert() method.
+		$this->db->insert('user' , array(
+			'name' => $user->getName() ,
+			'email' => $user->getEmail()
+		));
 	}
 
 	public function update(UserInterface $user) {
-		// TODO: Implement update() method.
+		$this->db->where('id' , $user->getId());
+		$this->db->limit(1);
+		$this->db->update('user' , array(
+			'name' => $user->getName() ,
+			'email' => $user->getEmail()
+		));
 	}
 
 	public function delete($id) {
-		// TODO: Implement delete() method.
+		if ($id instanceof UserInterface) {
+			$id = $id->getId();
+		}
+		$this->db->where('id' , $id);
+		$this->db->delete('user');
 	}
 
-	private function loadUser(array $row) {
-		$user = new User($row["name"] , $row["email"]);
-		$user->setId($row["id"]);
+	private function loadUser($row) {
+		$user = new User($row->name , $row->email);
+		$user->setId((int)$row->id);
 		return $user;
 	}
 }
