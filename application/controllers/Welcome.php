@@ -1,4 +1,8 @@
 <?php
+
+use Services\CountGirl\GroupLeader;
+use Services\CountGirl\Teacher;
+
 defined('BASEPATH') or exit('No direct script access allowed');
 
 
@@ -11,7 +15,11 @@ class Welcome extends CI_Controller
 
 	}
 
+	/**
+	 * 迪米特法则的反模式，Teacher应该只跟GroupLeader交流
+	 */
 	public function index() {
-
+		$teacher = new Teacher();
+		$teacher->command(new GroupLeader());
 	}
 }
