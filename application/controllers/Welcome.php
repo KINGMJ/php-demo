@@ -22,4 +22,17 @@ class Welcome extends CI_Controller
 		$teacher = new Teacher();
 		$teacher->command(new GroupLeader());
 	}
+
+	/**
+	 * 运用迪米特法则之后的例子
+	 */
+	public function index2() {
+		$girls = [];
+		for ($i = 0; $i < 20; $i++) {
+			array_push($girls , new \Services\CountGirl2\Girl());
+		}
+		$teacher = new \Services\CountGirl2\Teacher();
+		$teacher->command(new \Services\CountGirl2\GroupLeader($girls));
+
+	}
 }
