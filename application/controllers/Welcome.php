@@ -1,4 +1,7 @@
 <?php
+
+use Services\Emperor\Emperor;
+
 defined('BASEPATH') or exit('No direct script access allowed');
 
 
@@ -11,7 +14,14 @@ class Welcome extends CI_Controller
 
 	}
 
+	/**
+	 * 单例模式实现
+	 */
 	public function index() {
+		$emperor = Emperor::getInstance();
+		$emperor::say();
 
+		$emperor2 = Emperor::getInstance();
+		printr($emperor === $emperor2);
 	}
 }
