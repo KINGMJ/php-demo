@@ -4,6 +4,8 @@ use Services\AbstractFactory\Concrete1Factory;
 use Services\AbstractFactory\Concrete2Factory;
 use Services\FactoryMethod\ProductAFactory;
 use Services\FactoryMethod\ProductBFactory;
+use Services\NvWa\FemaleFactory;
+use Services\NvWa\MaleFactory;
 use Services\SimpleFactory\SimpleFactory;
 
 defined('BASEPATH') or exit('No direct script access allowed');
@@ -55,5 +57,20 @@ class Welcome extends CI_Controller
 		//生产2b
 		$product2B = $factory2->makeProductB();
 		$product2B->show();
+	}
+
+	/**
+	 * 抽象工厂的具体例子：女娲造人，两个维度：肤色和性别
+	 */
+	public function index4() {
+		printr("男性生产线开始工作...");
+		$maleFactory = new MaleFactory();
+		$maleYellowHuman = $maleFactory->createYellowHuman();
+		$maleYellowHuman->talk();
+
+		printr("女性生产线开始工作...");
+		$femaleFactory = new FemaleFactory();
+		$femaleBlackHuman = $femaleFactory->createBlackHuman();
+		$femaleBlackHuman->talk();
 	}
 }
