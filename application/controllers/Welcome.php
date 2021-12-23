@@ -1,5 +1,7 @@
 <?php
 
+use Services\AbstractFactory\Concrete1Factory;
+use Services\AbstractFactory\Concrete2Factory;
 use Services\FactoryMethod\ProductAFactory;
 use Services\FactoryMethod\ProductBFactory;
 use Services\SimpleFactory\SimpleFactory;
@@ -37,5 +39,21 @@ class Welcome extends CI_Controller
 		$productA->show();
 		$productB = (new ProductBFactory())->makeProduct();
 		$productB->show();
+	}
+
+	/**
+	 * 抽象工厂
+	 */
+	public function index3() {
+		$factory1 = new Concrete1Factory();
+		$factory2 = new Concrete2Factory();
+
+		//生产1a
+		$product1A = $factory1->makeProductA();
+		$product1A->show();
+
+		//生产2b
+		$product2B = $factory2->makeProductB();
+		$product2B->show();
 	}
 }
