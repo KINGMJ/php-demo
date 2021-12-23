@@ -1,5 +1,7 @@
 <?php
 
+use Services\FactoryMethod\ProductAFactory;
+use Services\FactoryMethod\ProductBFactory;
 use Services\SimpleFactory\SimpleFactory;
 
 defined('BASEPATH') or exit('No direct script access allowed');
@@ -25,5 +27,15 @@ class Welcome extends CI_Controller
 		$productB->show();
 		$productC = SimpleFactory::makeProduct(SimpleFactory::$PRODUCT_C);
 		$productC->show();
+	}
+
+	/**
+	 * 工厂方法示例
+	 */
+	public function index2() {
+		$productA = (new ProductAFactory())->makeProduct();
+		$productA->show();
+		$productB = (new ProductBFactory())->makeProduct();
+		$productB->show();
 	}
 }
