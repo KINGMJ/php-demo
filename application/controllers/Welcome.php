@@ -3,6 +3,7 @@
 use Services\ClassAdapter\Adapter;
 use Services\ClassAdapter\ConcreteTarget;
 use Services\ObjectAdapter\Adaptee;
+use Services\UserClassAdapter\UserInfo;
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
@@ -37,5 +38,18 @@ class Welcome extends CI_Controller
 		$adaptee = new Adaptee();
 		$target2 = new Services\ObjectAdapter\Adapter($adaptee);
 		$target2->request();
+	}
+
+	/**
+	 * 类适配器的例子
+	 */
+	public function index3() {
+		//获取内部系统的成员信息
+		$user = new UserInfo();
+		printr($user->getMobileNumber());
+
+		//获取外部系统的成员信息
+		$user2 = new \Services\UserClassAdapter\Adapter();
+		printr($user2->getMobileNumber());
 	}
 }
