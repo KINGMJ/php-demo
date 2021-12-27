@@ -33,6 +33,7 @@ class Welcome extends CI_Controller
 		$website4 = $factory->getFlyWeight("博客");
 		$website4->use(new User("李四"));
 
+		//虽然有4个网站，但实际上只有两个网站实例，这种方式大大减少了对象的创建个数
 		printr($factory->getFlyWeightsCount());
 	}
 }
