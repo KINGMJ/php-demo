@@ -1,4 +1,8 @@
 <?php
+
+use Services\WebsiteFlyweight\User;
+use Services\WebsiteFlyweight\WebsiteFactory;
+
 defined('BASEPATH') or exit('No direct script access allowed');
 
 
@@ -13,5 +17,22 @@ class Welcome extends CI_Controller
 
 	public function index() {
 
+	}
+
+	public function index2() {
+		$factory = new WebsiteFactory();
+		$website1 = $factory->getFlyWeight("产品展示");
+		$website1->use(new User("小菜"));
+
+		$website2 = $factory->getFlyWeight("产品展示");
+		$website2->use(new User("大鸟"));
+
+		$website3 = $factory->getFlyWeight("博客");
+		$website3->use(new User("张三"));
+
+		$website4 = $factory->getFlyWeight("博客");
+		$website4->use(new User("李四"));
+
+		printr($factory->getFlyWeightsCount());
 	}
 }
