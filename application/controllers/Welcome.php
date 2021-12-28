@@ -1,4 +1,7 @@
 <?php
+
+use Services\LiftState\Context;
+
 defined('BASEPATH') or exit('No direct script access allowed');
 
 
@@ -12,6 +15,11 @@ class Welcome extends CI_Controller
 	}
 
 	public function index() {
-
+		$context = new Context();
+		$context->setLiftState(Context::$CLOSING_STATE);
+		$context->open();
+		$context->close();
+		$context->run();
+		$context->stop();
 	}
 }
