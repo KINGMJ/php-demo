@@ -41,4 +41,41 @@ class Welcome extends CI_Controller
 		printr("老师：再次离开了教室");
 		$teacher->notifyObservers();
 	}
+
+	/**
+	 * 观察者模式2：观察者实现不同的方法，php中可以用反射来实现
+	 */
+	public function index2() {
+		//三个观察者
+		$student1 = new \Services\Observer2\Student1();
+		$student2 = new \Services\Observer2\Student2();
+		$student3 = new \Services\Observer2\Student3();
+		//被观察者
+		$teacher = new \Services\Observer2\Teacher();
+		//添加观察者
+		$teacher->add($student1 , 'playPhone');
+		$teacher->add($student2 , 'readNovel');
+		$teacher->add($student3 , 'chat');
+
+		//通知观察者
+		printr("老师：离开了教室");
+		$teacher->notifyObservers();
+	}
+
+	public function index3() {
+		//三个监听者
+		$student1 = new \Services\Observer3\Student1();
+		$student2 = new \Services\Observer3\Student2();
+		$student3 = new \Services\Observer3\Student3();
+		//被监听者
+		$teacher = new \Services\Observer3\Teacher();
+		//添加监听者
+		$teacher->addListener($student1 , 'readBook');
+		$teacher->addListener($student2 , 'doHomework');
+		$teacher->addListener($student3 , 'reciteWords');
+
+		//通知监听者
+		printr("老师：进入了教室");
+		$teacher->notifyListeners();
+	}
 }
