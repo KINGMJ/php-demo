@@ -11,7 +11,14 @@ class Welcome extends CI_Controller
 
 	}
 
+	/**
+	 * 事件系统demo
+	 */
 	public function index() {
-
+		//触发TaskCopy触发事件
+		$this->hooks->call_hook('event_notifier_bus' , array('TaskCopy' , [
+			'board_id' => 123 ,
+			'task_id' => 456
+		]));
 	}
 }
